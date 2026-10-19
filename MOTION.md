@@ -161,8 +161,10 @@ Headless Chrome, 1440×900 and 430×932, against the local server:
   because the webfont swap reflowed the hero rail and moved the headline; the
   rail is now out of flow (`position: absolute`) and the four latin faces are
   preloaded, so the swap happens under the leader.
-- **Frame pacing** over a full-page 2 s scroll: median 16.7 ms, p95 18.2 ms,
-  worst 18.8 ms, zero frames over 33 ms.
+- **Frame pacing** over a full-page 2 s scroll, four runs: median 16.6–16.7 ms,
+  p95 18.1–19.3 ms, worst frame 20.8–26.2 ms, **zero** frames over 33 ms.
+  Quoting one run would have shown the best of them; the range is the honest
+  number, and the only stable claim is that nothing drops a frame.
 - **JavaScript disabled**: leader lifts itself (`clip-path: inset(0 0 100%)`,
   `pointer-events: none`), hero and all four section headings read in full, no
   line left clipped.
