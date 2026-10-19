@@ -208,7 +208,6 @@
     "00": [
       { k: "still", l: "76%", t: "10%", w: "clamp(96px, 12vw, 176px)", h: "clamp(62px, 8vw, 110px)", rot: 6.5, dz: 46, from: [34, -54] },
       { k: "oxide", l: "-1%", t: "44%", w: "clamp(44px, 4.4vw, 64px)", h: "clamp(88px, 9vw, 140px)", rot: -8, dz: 30, from: [-38, 58] },
-      { k: "tape", l: "52%", t: "90%", w: "clamp(96px, 12vw, 176px)", h: "clamp(15px, 1.8vw, 22px)", rot: -3.4, dz: 16, from: [-46, 26] },
       { k: "dots", l: "91%", t: "64%", w: "clamp(46px, 5vw, 84px)", h: "clamp(46px, 5vw, 84px)", rot: 4, dz: 70, from: [22, 34] }
     ],
     "01": [
@@ -229,8 +228,7 @@
     ],
     "04": [
       { k: "bone", l: "86%", t: "34px", w: "clamp(70px, 7.6vw, 104px)", h: "clamp(72px, 8vw, 112px)", rot: -6, dz: 38, from: [44, -36] },
-      { k: "navy", l: "2%", b: "26px", w: "clamp(84px, 9vw, 122px)", h: "clamp(52px, 5.6vw, 76px)", rot: 4, dz: 32, from: [-38, 34] },
-      { k: "tape", l: "24%", b: "32px", w: "clamp(96px, 12vw, 170px)", h: "clamp(14px, 1.6vw, 20px)", rot: -2, dz: 15, from: [0, 26] }
+      { k: "navy", l: "74%", b: "24px", w: "clamp(84px, 9vw, 122px)", h: "clamp(50px, 5.4vw, 72px)", rot: 4, dz: 32, from: [-38, 34] }
     ]
   };
 

@@ -1036,7 +1036,7 @@ body { padding-top: var(--bar); padding-bottom: var(--bar); }
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23p)'/%3E%3C/svg%3E");
 }
-.paper--bone { --fill: linear-gradient(158deg, #ded3b9, #b5a78b); }
+.paper--bone { --fill: linear-gradient(158deg, #d8cdb2, #a99b80); }
 .paper--oxide { --fill: linear-gradient(158deg, #ba4a30, #8b2d1b); }
 .paper--navy { --fill: linear-gradient(158deg, #2a3852, #141c2c); }
 .paper--still {
@@ -1074,13 +1074,12 @@ body { padding-top: var(--bar); padding-bottom: var(--bar); }
 }
 .seam i {
   position: absolute;
-  width: clamp(64px, 8vw, 126px);
-  height: 15px;
-  background: rgba(233, 225, 207, 0.12);
-  border-left: 1px solid rgba(233, 225, 207, 0.2);
-  border-right: 1px solid rgba(233, 225, 207, 0.2);
+  width: clamp(52px, 6vw, 96px);
+  height: 12px;
+  background: linear-gradient(180deg, rgba(233, 225, 207, 0.20), rgba(233, 225, 207, 0.09));
+  clip-path: polygon(0 18%, 100% 0, 98% 84%, 3% 100%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
   transform: translate3d(calc(var(--p, 0) * -16px), 0, 0) rotate(-1.7deg);
-  backdrop-filter: blur(1px);
 }
 .seam i:first-child { left: 5%; top: -8px; }
 .seam i:last-child {

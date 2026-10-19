@@ -67,7 +67,7 @@ number before you read the heading. The rule is the same idea at small scale.
 The hero has no numeral: `00` is the prologue, and a slate on the open is noise.
 
 ### 4. Collage B-roll
-**Where** `.collage` inside each scene; 17 scraps, 4 splice seams.
+**Where** `.collage` inside each scene; 15 scraps, 4 splice seams.
 **What** Torn-paper polygons (`torn()` in `motion.js`, seeded noise, so the
 tear is identical on every load) in bone, oxide, navy, plus a dark "still"
 with a viewfinder border, translucent tape and a halftone patch. Each scrap
@@ -143,7 +143,9 @@ Headless Chrome, 1440×900 and 430×932, against the local server:
 - **Zero** console errors, page errors or failed requests.
 - Leader removed; 5 scenes, all reaching `.is-set`; hero headline at
   `inset(-24% -6% -24% 0px)` (fully wiped, not left clipped).
-- 17 scraps, 4 splice seams, all assembled (`opacity: 1`) once their scene is set.
+- 15 scraps across the five scenes (3 / 4 / 3 / 3 / 2), 4 splice seams; every
+  scrap in a scene reaches `opacity: 1` once that scene is set, checked scene by
+  scene rather than at a single scroll position.
 - HUD advances `SHOT 00 — OPEN` → `SHOT 04 — CONTACT`; timecode ends `00:01:12:00`
   at the foot of the page; thread `stroke-dashoffset` 1 → 0.
 - Filter click still isolates *Security* → DEEP + urlscan-mcp.
@@ -155,5 +157,7 @@ Headless Chrome, 1440×900 and 430×932, against the local server:
   preloaded, so the swap happens under the leader.
 - **Frame pacing** over a full-page 2 s scroll: median 16.7 ms, p95 18.2 ms,
   worst 18.8 ms, zero frames over 33 ms.
-- Paper/text collisions checked with range rects (glyph bounds, not block
-  boxes): none. Paper is constrained to section padding bands by construction.
+- Paper/text collisions checked at 1440, 1100 and 780 px using per-line
+  text-node rects (`Range.getClientRects`), not block boxes: zero. An earlier
+  probe reported a false hit on the two-line work heading because a range over
+  the whole heading returns one box spanning both lines.
