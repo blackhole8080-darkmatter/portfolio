@@ -1092,12 +1092,12 @@ body { padding-top: var(--bar); padding-bottom: var(--bar); }
 /* ---------------------------------------------------------- 4. hand-drawn layer */
 .sketch {
   position: absolute;
-  top: clamp(72px, 11vh, 150px);
-  right: clamp(-60px, -1vw, 10px);
-  width: min(40vw, 450px);
-  color: rgba(200, 255, 77, 0.55);
+  top: clamp(64px, 9vh, 132px);
+  right: clamp(-92px, -4vw, -10px);
+  width: min(38vw, 430px);
+  color: rgba(200, 255, 77, 0.45);
   z-index: -1;
-  opacity: 0.62;
+  opacity: 0.5;
   pointer-events: none;
 }
 .sketch .s {
