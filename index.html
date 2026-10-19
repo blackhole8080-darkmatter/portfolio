@@ -12,21 +12,43 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307080b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' fill='%23c8ff4d' text-anchor='middle'%3E8%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Preload the four latin faces so the swap happens under the leader card
+     instead of moving the headline while the page is being read. -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-6zUTjg.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/instrumentserif/v5/jizHRFtNs2ka5fXjeivQ4LroWlx-6zAjjH7M.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="curtain" id="curtain" aria-hidden="true">
-  <span class="curtain-mark">8</span>
-  <span class="curtain-line"></span>
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+<!-- film chrome: letterbox, grade, viewfinder marks, HUD. Decoration only. -->
+<div class="film-bar film-bar--top" aria-hidden="true"></div>
+<div class="film-bar film-bar--bot" aria-hidden="true"></div>
+<div class="film-grade" aria-hidden="true"></div>
+<div class="film-vignette" aria-hidden="true"></div>
+<div class="film-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="film-hud" aria-hidden="true">
+  <span class="hud-rec"></span>
+  <span id="hud-scene">SHOT 00 &mdash; OPEN</span>
+  <span class="hud-tc" id="hud-tc">00:00:00:00</span>
 </div>
 
-<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+<div class="film-leader" id="leader" aria-hidden="true">
+  <p class="leader-a">8blackhole8</p>
+  <p class="leader-b">a portfolio in one take</p>
+  <p class="leader-c">2026 &middot; 24 fps &middot; colour</p>
+</div>
+
+<svg class="film-thread" id="thread" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <path d="M50 0 C 16 110, 84 210, 50 330 S 16 540, 50 660 S 84 870, 50 1000" pathLength="1"/>
+</svg>
 
 <div class="grain" aria-hidden="true"></div>
 <div class="spotlight" id="spotlight" aria-hidden="true"></div>
-<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-ring"></span><span class="cursor-dot"></span></div>
 
 <header class="nav">
   <a class="mark" href="#top" aria-label="Home">
@@ -46,9 +68,21 @@
 
 <main id="top">
 
-  <section class="hero">
+  <section class="hero scene" data-scene="00" data-label="Open">
     <canvas class="hero-canvas" id="field" aria-hidden="true"></canvas>
     <div class="hero-glow" aria-hidden="true"></div>
+
+    <svg class="sketch" viewBox="0 0 440 320" aria-hidden="true" focusable="false">
+      <g class="sketch-boil">
+        <path class="s" pathLength="1" d="M214 34C338 24 404 104 384 182c-20 78-166 104-252 52C50 182 76 66 196 42"/>
+        <path class="s" pathLength="1" d="M232 52c100-4 152 60 138 120"/>
+        <path class="s" pathLength="1" d="M42 268c78 40 208 44 300 2"/>
+        <path class="s" pathLength="1" d="M330 258l16 10-14 12"/>
+        <circle class="s" cx="356" cy="96" r="6"/>
+        <path class="s" pathLength="1" d="M118 120c30-26 62-40 96-44"/>
+        <text class="sketch-label" x="30" y="238">one take</text>
+      </g>
+    </svg>
 
     <div class="hero-inner">
       <div class="hero-main">
@@ -93,7 +127,7 @@
     <div class="ticker-track" id="ticker"></div>
   </div>
 
-  <section class="section" id="work">
+  <section class="section scene" id="work" data-scene="01" data-label="Selected work">
     <div class="section-head">
       <p class="kicker"><span>01</span> Selected work</p>
       <h2 data-split>Eight things I built to find out<br>how they work.</h2>
@@ -102,7 +136,7 @@
     <div class="grid" id="projects"></div>
   </section>
 
-  <section class="section" id="signal">
+  <section class="section scene" id="signal" data-scene="02" data-label="Signal">
     <div class="section-head">
       <p class="kicker"><span>02</span> Signal</p>
       <h2 data-split>What the code is<br>actually made of.</h2>
@@ -124,7 +158,7 @@
     </div>
   </section>
 
-  <section class="section" id="approach">
+  <section class="section scene" id="approach" data-scene="03" data-label="Approach">
     <div class="section-head">
       <p class="kicker"><span>03</span> Approach</p>
       <h2 data-split>Three rules that show up<br>in every repository.</h2>
@@ -162,7 +196,7 @@
     </div>
   </section>
 
-  <section class="contact" id="contact">
+  <section class="contact scene" id="contact" data-scene="04" data-label="Contact">
     <p class="kicker"><span>04</span> Contact</p>
     <h2 data-split>Building something that needs to be honest, offline, or fun?</h2>
     <div class="contact-actions">

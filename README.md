@@ -14,7 +14,7 @@ without touching the design.
 | `index.html` | Page shell and section structure |
 | `styles.css` | Design system, layout, motion |
 | `app.js` | Renders projects, filters, language bars, canvas field |
-| `motion.js` | Entrance, kinetic type, reveals, cursor, magnetism, tilt, FLIP, odometer, ticker |
+| `motion.js` | Camera rig, title-card wipes, collage, hand-drawn marks, HUD, tilt, FLIP, odometer, ticker |
 | `data.js` | **Generated** — `window.PORTFOLIO` payload |
 | `scripts/sync_github.py` | Pulls repos/languages/commits, writes `data.js` |
 
@@ -56,11 +56,13 @@ All animation is hand-written CSS and `motion.js` — no GSAP, Lottie or Framer
 Motion, and no scroll-jacking. **[MOTION.md](MOTION.md)** lists every technique,
 where it is used, why it exists, and what was deliberately left out.
 
-In short: an entrance curtain that hides the font swap, masked word reveals,
-scroll-scoped reveals, a scroll progress line, a cursor companion, magnetic
-buttons, card tilt with pointer glare, FLIP transitions when filtering, rolling
-odometer stats, a pausable ticker, and a bounded hero parallax — all of it
-collapsing under `prefers-reduced-motion: reduce`.
+The page is staged as one continuous take: a single progress value per scene
+drives a depth stack, so content and torn-paper collage are travelled past
+rather than faded in. Headings wipe on like lower thirds, scene numerals slab
+in, hand-drawn line work draws itself, and a leader card, letterbox, HUD
+timecode, 24fps grain and a warm/cool grade frame the whole thing. Kept from the
+first cut: FLIP filtering, rolling odometers, the film-strip ticker, card tilt
+and magnetic buttons. All of it collapses under `prefers-reduced-motion: reduce`.
 
 ## Notes
 
