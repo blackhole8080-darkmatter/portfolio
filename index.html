@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8blackhole8 — things that think, see, and play</title>
+<meta name="description" content="Portfolio of 8blackhole8: local-first AI, security tooling, and browser games. Built from live GitHub repositories.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="8blackhole8 — things that think, see, and play">
+<meta property="og:description" content="Local-first AI, security tooling, and browser games.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307080b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' fill='%23c8ff4d' text-anchor='middle'%3E8%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="mark" href="#top" aria-label="Home">
+    <span class="mark-glyph">8</span>
+    <span class="mark-text">blackhole<em>8</em></span>
+  </a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#work">Work</a>
+    <a href="#signal">Signal</a>
+    <a href="#approach">Approach</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="nav-cta" id="nav-github" href="https://github.com/blackhole8080-darkmatter" target="_blank" rel="noopener">
+    GitHub <span aria-hidden="true">↗</span>
+  </a>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <canvas class="hero-canvas" id="field" aria-hidden="true"></canvas>
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-main">
+      <p class="eyebrow reveal"><span class="dot"></span> Portfolio — <span id="year">2026</span> · built from <span id="repo-count">12</span> repositories</p>
+
+      <h1 class="hero-title">
+        <span class="line reveal">I build things</span>
+        <span class="line reveal">that <em>think</em>, <em>see</em>,</span>
+        <span class="line reveal">and <em>play</em>.</span>
+      </h1>
+
+      <p class="hero-lead reveal">
+        Local-first AI. Security tooling that would rather say <q>unknown</q> than lie.
+        Browser games with no account, no ads, and no loading screen.
+        Most of it is built to work offline — and the interesting part is usually what it
+        refuses to do.
+      </p>
+
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#work">See the work <span aria-hidden="true">↓</span></a>
+        <a class="btn btn-ghost" id="hero-github" href="https://github.com/blackhole8080-darkmatter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          <span id="github-handle">blackhole8080-darkmatter</span>
+        </a>
+      </div>
+
+      <dl class="stats reveal" id="stats">
+        <div><dt>Projects</dt><dd data-count="12">0</dd></div>
+        <div><dt>Commits</dt><dd data-count="214">0</dd></div>
+        <div><dt>Languages</dt><dd data-count="12">0</dd></div>
+        <div><dt>Live games</dt><dd data-count="1">0</dd></div>
+      </dl>
+      </div>
+
+      <aside class="hero-rail" id="rail" aria-label="At a glance"></aside>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true"><span></span></div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="section-head">
+      <p class="kicker"><span>01</span> Selected work</p>
+      <h2>Eight things I built to find out<br>how they work.</h2>
+      <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+    </div>
+    <div class="grid" id="projects"></div>
+  </section>
+
+  <section class="section" id="signal">
+    <div class="section-head">
+      <p class="kicker"><span>02</span> Signal</p>
+      <h2>What the code is<br>actually made of.</h2>
+    </div>
+
+    <div class="signal-grid">
+      <div class="langs reveal">
+        <div class="langs-head">
+          <span>Language</span><span>Share of all bytes</span>
+        </div>
+        <div id="languages"></div>
+      </div>
+
+      <div class="also reveal">
+        <h3>Also in the lab</h3>
+        <ul id="also"></ul>
+        <p class="also-note">Forks, coursework and scratch repos live on the <a id="also-github" href="https://github.com/blackhole8080-darkmatter?tab=repositories" target="_blank" rel="noopener">profile</a>, not here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="approach">
+    <div class="section-head">
+      <p class="kicker"><span>03</span> Approach</p>
+      <h2>Three rules that show up<br>in every repository.</h2>
+    </div>
+
+    <div class="principles">
+      <article class="principle reveal">
+        <span class="num">01</span>
+        <h3>Never fake a verdict.</h3>
+        <p>
+          A missing answer is not a clean one. urlscan-mcp separates <em>no data</em> from
+          <em>no findings</em>; DEEP records a timed-out source as degraded and returns
+          <code>unknown</code> when nothing responds. Being useless is recoverable —
+          being confidently wrong is not.
+        </p>
+      </article>
+      <article class="principle reveal">
+        <span class="num">02</span>
+        <h3>Local-first, by default.</h3>
+        <p>
+          A board game parlour that needs a server is a rented game. Science Lab vendors
+          three.js so it works offline; DEEP runs on Ollama with cloud models as a fallback.
+          The network is an enhancement, never a dependency.
+        </p>
+      </article>
+      <article class="principle reveal">
+        <span class="num">03</span>
+        <h3>Boring cores, sharp edges.</h3>
+        <p>
+          Parlour is one alpha-beta search behind seven pure-function game specs. Indra is
+          vertical slices with provenance in every envelope. The interesting behaviour lives
+          at the edge; the middle stays small enough to reason about.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <p class="kicker"><span>04</span> Contact</p>
+    <h2>Building something that needs to be honest, offline, or fun?</h2>
+    <div class="contact-actions">
+      <a class="btn btn-primary" id="contact-github" href="https://github.com/blackhole8080-darkmatter" target="_blank" rel="noopener">
+        Find me on GitHub <span aria-hidden="true">↗</span>
+      </a>
+      <a class="btn btn-ghost" href="#work">Back to the work</a>
+    </div>
+    <p class="updated">Repository data synced <time id="synced">today</time> · rebuilt with <code>scripts/sync_github.py</code></p>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>© <span id="foot-year">2026</span> 8blackhole8</span>
+  <span class="foot-mid">No trackers. No cookies. Static files.</span>
+  <a href="#top">Top ↑</a>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
