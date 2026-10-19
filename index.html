@@ -17,8 +17,16 @@
 </head>
 <body>
 
+<div class="curtain" id="curtain" aria-hidden="true">
+  <span class="curtain-mark">8</span>
+  <span class="curtain-line"></span>
+</div>
+
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
 <div class="grain" aria-hidden="true"></div>
 <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-ring"></span><span class="cursor-dot"></span></div>
 
 <header class="nav">
   <a class="mark" href="#top" aria-label="Home">
@@ -47,9 +55,9 @@
       <p class="eyebrow reveal"><span class="dot"></span> Portfolio — <span id="year">2026</span> · built from <span id="repo-count">12</span> repositories</p>
 
       <h1 class="hero-title">
-        <span class="line reveal">I build things</span>
-        <span class="line reveal">that <em>think</em>, <em>see</em>,</span>
-        <span class="line reveal">and <em>play</em>.</span>
+        <span class="line" data-split>I build things</span>
+        <span class="line" data-split>that <em>think</em>, <em>see</em>,</span>
+        <span class="line" data-split>and <em>play</em>.</span>
       </h1>
 
       <p class="hero-lead reveal">
@@ -81,10 +89,14 @@
     <div class="scroll-hint" aria-hidden="true"><span></span></div>
   </section>
 
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
   <section class="section" id="work">
     <div class="section-head">
       <p class="kicker"><span>01</span> Selected work</p>
-      <h2>Eight things I built to find out<br>how they work.</h2>
+      <h2 data-split>Eight things I built to find out<br>how they work.</h2>
       <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
     </div>
     <div class="grid" id="projects"></div>
@@ -93,7 +105,7 @@
   <section class="section" id="signal">
     <div class="section-head">
       <p class="kicker"><span>02</span> Signal</p>
-      <h2>What the code is<br>actually made of.</h2>
+      <h2 data-split>What the code is<br>actually made of.</h2>
     </div>
 
     <div class="signal-grid">
@@ -115,7 +127,7 @@
   <section class="section" id="approach">
     <div class="section-head">
       <p class="kicker"><span>03</span> Approach</p>
-      <h2>Three rules that show up<br>in every repository.</h2>
+      <h2 data-split>Three rules that show up<br>in every repository.</h2>
     </div>
 
     <div class="principles">
@@ -152,7 +164,7 @@
 
   <section class="contact" id="contact">
     <p class="kicker"><span>04</span> Contact</p>
-    <h2>Building something that needs to be honest, offline, or fun?</h2>
+    <h2 data-split>Building something that needs to be honest, offline, or fun?</h2>
     <div class="contact-actions">
       <a class="btn btn-primary" id="contact-github" href="https://github.com/blackhole8080-darkmatter" target="_blank" rel="noopener">
         Find me on GitHub <span aria-hidden="true">↗</span>
@@ -171,5 +183,6 @@
 
 <script src="data.js"></script>
 <script src="app.js"></script>
+<script src="motion.js"></script>
 </body>
 </html>

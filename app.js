@@ -63,20 +63,6 @@
     if (statValues[label] >= 1000) dd.dataset.suffix = "";
   });
 
-  const animateCount = (el) => {
-    const target = Number(el.dataset.count || 0);
-    if (reduceMotion) { el.textContent = String(target); return; }
-    const start = performance.now();
-    const dur = 1100 + Math.random() * 350;
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / dur);
-      const eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = String(Math.round(target * eased));
-      if (t < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  };
-
   /* ---------------------------------------------------------- hero rail */
   const rail = document.getElementById("rail");
   if (rail && DATA.projects.length) {
@@ -148,7 +134,7 @@
 
   if (grid) grid.innerHTML = DATA.projects.map(cardHTML).join("");
 
-  /* filters */
+  /* filter chips are rendered here; the click handler (with FLIP) lives in motion.js */
   const filterBar = document.getElementById("filters");
   if (filterBar && DATA.projects.length) {
     const used = [...new Set(DATA.projects.flatMap((p) => p.categories || []))];
@@ -157,17 +143,6 @@
       .map(([key, label], i) =>
         `<button class="filter" data-filter="${esc(key)}" aria-pressed="${i === 0}">${esc(label)}</button>`)
       .join("");
-
-    filterBar.addEventListener("click", (e) => {
-      const btn = e.target.closest(".filter");
-      if (!btn) return;
-      const key = btn.dataset.filter;
-      $$(".filter", filterBar).forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-      $$(".card", grid).forEach((card) => {
-        const cats = (card.dataset.cats || "").split(" ");
-        card.classList.toggle("filtered-out", key !== "all" && !cats.includes(key));
-      });
-    });
   }
 
   /* ---------------------------------------------------------- languages */
@@ -204,7 +179,6 @@
         if (!entry.isIntersecting) return;
         entry.target.classList.add("in");
         io.unobserve(entry.target);
-        if (entry.target.id === "stats") $$("dd", entry.target).forEach(animateCount);
         if (entry.target.classList.contains("langs")) {
           $$(".lang-bar i", entry.target).forEach((bar, i) => {
             setTimeout(() => { bar.style.width = `${bar.dataset.w}%`; }, i * 90);
@@ -234,15 +208,6 @@
       });
     }, { passive: true });
   }
-
-  /* card spotlight + subtle lift */
-  $$(".card").forEach((card) => {
-    card.addEventListener("pointermove", (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty("--cx", `${e.clientX - r.left}px`);
-      card.style.setProperty("--cy", `${e.clientY - r.top}px`);
-    }, { passive: true });
-  });
 
   /* ---------------------------------------------------------- nav state */
   const nav = $(".nav");

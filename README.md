@@ -14,6 +14,7 @@ without touching the design.
 | `index.html` | Page shell and section structure |
 | `styles.css` | Design system, layout, motion |
 | `app.js` | Renders projects, filters, language bars, canvas field |
+| `motion.js` | Entrance, kinetic type, reveals, cursor, magnetism, tilt, FLIP, odometer, ticker |
 | `data.js` | **Generated** — `window.PORTFOLIO` payload |
 | `scripts/sync_github.py` | Pulls repos/languages/commits, writes `data.js` |
 
@@ -49,10 +50,23 @@ The site is plain static files, so Pages can serve it directly:
 For a user site at `https://<user>.github.io/`, name the repository
 `<user>.github.io` instead and push the same files to its root.
 
+## Motion
+
+All animation is hand-written CSS and `motion.js` — no GSAP, Lottie or Framer
+Motion, and no scroll-jacking. **[MOTION.md](MOTION.md)** lists every technique,
+where it is used, why it exists, and what was deliberately left out.
+
+In short: an entrance curtain that hides the font swap, masked word reveals,
+scroll-scoped reveals, a scroll progress line, a cursor companion, magnetic
+buttons, card tilt with pointer glare, FLIP transitions when filtering, rolling
+odometer stats, a pausable ticker, and a bounded hero parallax — all of it
+collapsing under `prefers-reduced-motion: reduce`.
+
 ## Notes
 
 - No trackers, no cookies, no analytics, no external JS. The only network
   requests are Google Fonts and the GitHub links themselves.
-- Motion respects `prefers-reduced-motion`.
+- Motion respects `prefers-reduced-motion`; nothing depends on an animation
+  completing in order to be readable.
 - The hero constellation is a `<canvas>` drawn at device pixel ratio, capped at
   90 particles.
