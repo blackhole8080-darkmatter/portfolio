@@ -917,8 +917,14 @@ body { padding-top: var(--bar); padding-bottom: var(--bar); }
   background: #050608;
   clip-path: inset(0 0 0 0);
   transition: clip-path 0.72s cubic-bezier(0.76, 0, 0.24, 1);
+  /* The lift is CSS so the card clears itself even if motion.js never
+     runs — an opaque overlay that only JS can remove is a black page. */
+  animation: leaderLift 0.72s cubic-bezier(0.76, 0, 0.24, 1) 1.04s forwards;
 }
 .film-leader.done { clip-path: inset(0 0 100% 0); }
+@keyframes leaderLift {
+  to { clip-path: inset(0 0 100% 0); pointer-events: none; }
+}
 .film-leader p { margin: 0; }
 .leader-a {
   font: 400 clamp(1.9rem, 5vw, 3.2rem)/1 var(--serif);

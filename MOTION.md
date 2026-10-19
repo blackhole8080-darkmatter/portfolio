@@ -8,8 +8,11 @@ Two rules still hold:
 
 1. **Motion explains.** It establishes where you are, keeps objects continuous
    across the joins, or confirms an action. Anything that only decorated was cut.
-2. **Nothing is load-bearing.** With JS off the page is a legible still frame.
-   Under `prefers-reduced-motion: reduce` it is the same still frame by choice.
+2. **Nothing is load-bearing.** With JS off the page is a legible still frame —
+   the one overlay that could have trapped it, the leader card, lifts itself in
+   CSS. The project grid is still rendered by `app.js`, so that list needs JS;
+   the copy, headings and chrome do not. Under
+   `prefers-reduced-motion: reduce` it is the same still frame by choice.
 
 ---
 
@@ -99,6 +102,9 @@ layer wipes upward at 1.04 s and is removed at 1.9 s. The hero reveal begins
 at 1.0 s, so the headline is already wiping as the leader lifts.
 **Why** It covers the webfont swap and gives the page a directed opening. It is
 `aria-hidden`, never focusable, and gone from the DOM at 1.9 s.
+The wipe is a CSS animation (`leaderLift`), not a JS class alone: if `motion.js`
+never runs, the card still clears at 1.76 s instead of leaving an opaque black
+frame over the page. JS adds `.done` at the same moment for the DOM removal.
 
 ### 7. Film chrome
 **Where** `.film-bar`, `.film-frame`, `.film-hud`, `.film-grade`, `.film-vignette`.
@@ -157,6 +163,9 @@ Headless Chrome, 1440×900 and 430×932, against the local server:
   preloaded, so the swap happens under the leader.
 - **Frame pacing** over a full-page 2 s scroll: median 16.7 ms, p95 18.2 ms,
   worst 18.8 ms, zero frames over 33 ms.
+- **JavaScript disabled**: leader lifts itself (`clip-path: inset(0 0 100%)`,
+  `pointer-events: none`), hero and all four section headings read in full, no
+  line left clipped.
 - Paper/text collisions checked at 1440, 1100 and 780 px using per-line
   text-node rects (`Range.getClientRects`), not block boxes: zero. An earlier
   probe reported a false hit on the two-line work heading because a range over
